@@ -142,5 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'templates',  # Эгер CSS жана JS файлдарыңыз templates папкасында болсо
+    BASE_DIR / 'templates',  # Эгер CSS/JS файлдарыңыз templates папкасында турса
 ]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # <--- Ушул сапты кошуп коюңуз
