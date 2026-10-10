@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Веб-Тиркеме</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="phone-frame">
+        <!-- 01 - Авторизация (Кирүү) -->
+        <div id="auth-section" class="screen">
+            <div class="header-dots">•••</div>
+            <div class="auth-content">
+                <div class="logo-icon">✓</div>
+                <h2 id="auth-title">Кош келиңиз</h2>
+                <p class="subtitle" id="auth-subtitle">Улантуу үчүн аккаунтуңузга кириңиз</p>
+                
+                <form id="auth-form">
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="aida@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Пароль</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <p id="auth-status" class="status-message" role="status" aria-live="polite"></p>
+                    <button type="submit" id="login-btn" class="gradient-btn">Кирүү</button>
+                </form>
+                <div class="switch-auth">
+                    <span id="auth-switch-label">Аккаунтыңыз жокпу?</span>
+                    <button type="button" id="show-register" class="text-button">Катталуу</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 03 - Тапшырмалар тизмеси (Киргенден кийин көрүнөт) -->
+        <div id="app-section" class="screen hidden">
+            <header class="app-header">
+                <div>
+                    <span class="greeting" id="greeting">Жеке тапшырмалар</span>
+                    <h3>Тапшырмаларым</h3>
+                </div>
+                <div class="profile-badge" id="logout-btn" title="Чыгуу">А</div>
+            </header>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-num" data-stat="total">0</span>
+                    <span class="stat-label">Баары</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" data-stat="active">0</span>
+                    <span class="stat-label">Активдүү</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" data-stat="completed">0</span>
+                    <span class="stat-label">Бүттү</span>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="search" id="task-search" placeholder="Тапшырма издөө..." aria-label="Тапшырма издөө">
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Баары</button>
+                <button class="filter-btn" data-filter="active">Активдүү</button>
+                <button class="filter-btn" data-filter="completed">Бүттү</button>
+            </div>
+            <p id="app-status" class="status-message" role="status" aria-live="polite"></p>
+
+            <ul id="task-list" class="task-list">
+                <!-- Тапшырмалар ушул жерге JS аркылуу кошулат -->
+            </ul>
+
+            <button class="fab-btn" id="open-add-modal" type="button" aria-label="Тапшырма кошуу">+</button>
+        </div>
+    </div>
+
+    <div id="task-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
+        <div class="modal-panel">
+            <div class="modal-heading">
+                <h2 id="task-modal-title">Жаңы тапшырма</h2>
+                <button type="button" id="close-add-modal" class="close-btn" aria-label="Жабуу">×</button>
+            </div>
+            <form id="task-form">
+                <div class="input-group">
+                    <label for="task-title">Аталышы</label>
+                    <input type="text" id="task-title" maxlength="200" required>
+                </div>
+                <div class="input-group">
+                    <label for="task-desc">Сүрөттөмө</label>
+                    <textarea id="task-desc" rows="3"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="task-priority">Маанилүүлүгү</label>
+                    <select id="task-priority">
+                        <option value="low">Төмөн</option>
+                        <option value="medium" selected>Орточо</option>
+                        <option value="high">Жогору</option>
+                    </select>
+                </div>
+                <p id="task-status" class="status-message" role="status" aria-live="polite"></p>
+                <button type="submit" class="gradient-btn">Сактоо</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
