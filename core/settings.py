@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -145,4 +146,12 @@ STATICFILES_DIRS = [
     BASE_DIR / 'templates',  # Эгер CSS/JS файлдарыңыз templates папкасында турса
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # <--- Ушул сапты кошуп коюңуз
+STATIC_ROOT = BASE_DIR / 'staticfiles'  
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
